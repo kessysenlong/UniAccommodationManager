@@ -15,6 +15,7 @@ class RoomController extends Controller
             'room_quantity' => 'integer | required',
             'first_room' => 'integer | required',
             'occupancy' => 'integer',
+            'status' => 'string | required',
             'price' => 'nullable'
         ]);
 
@@ -34,21 +35,22 @@ class RoomController extends Controller
                 $room->beds = $request->occupancy;
                 $room->price = $request->price;
                 $room->hostel_id = $id;
+                $room->status = $request->status;
                 $room->occupancy = 0;
                 $room->save();
                 $validRooms++;
-            } else{
+            } else {
                 $invalidRooms++;
             }
         }
 
-            $notification = [
-                'message' => $validRooms.' of '.$numberOfRooms.' rooms have been created successfully!',
-                'alert-type' => $validRooms > $invalidRooms ? 'success' : 'error'
-            ];
-            return back()->with($notification);
-        }
-    
+        $notification = [
+            'message' => $validRooms . ' of ' . $numberOfRooms . ' rooms have been created successfully!',
+            'alert-type' => $validRooms > $invalidRooms ? 'success' : 'error'
+        ];
+        return back()->with($notification);
+    }
+
 
     public function roomValid(int $room, int $hostel_id)
     {
@@ -61,5 +63,59 @@ class RoomController extends Controller
         } else {
             return true;
         }
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'room_name' => 'required|string',
+            'hostel' => 'integer',
+            'beds' => 'required|string',
+            'price' => 'nullable|gt:1',
+            'status' => 'required|string'
+        ]);
+
+        $room = Room::find($id);
+
+        if ($this->roomValid($request->room_name, $request->hostel) == false || $room == null) {
+            $notification = [
+                'message' => 'This room name either already exists or is invalid',
+                'alert-type' => 'error'
+            ];
+            return back()->with($notification);
+        }
+
+        $room->name = $request->room_name;
+        $room->hostel_id = $request->hostel;
+        $room->beds = $request->beds;
+        $room->price = $request->price;
+        $room->status = $request->status;
+        $room->save();
+
+        $notification = [
+            'message' => 'Room updated successfully!',
+            'alert-type' => 'success'
+        ];
+
+        return back()->with($notification);
+    }
+
+    public function destroy($id)
+    {
+        $room = Room::find($id);
+        $room->delete();
+
+        $notification = [
+            'message' => 'Room deleted successfully!',
+            'alert-type' => 'success'
+        ];
+
+        return back()->with($notification);
+    }
+
+    public function getData($id){
+        $data = Room::find($id)->toJson();
+
+        return $data;
     }
 }

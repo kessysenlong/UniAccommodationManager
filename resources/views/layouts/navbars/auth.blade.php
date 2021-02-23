@@ -18,7 +18,7 @@
                 </a>
             </li>
             @if($user->isAdmin() == true)
-            <li class="{{ $elementActive == 'user' || $elementActive == 'admin_bookings' || $elementActive == 'admin_hostels' || $elementActive == 'admin_rooms' || $elementActive == 'admin_incidents' ? 'active' : '' }}">
+            <li class="{{ $elementActive == 'users' || $elementActive == 'admin_bookings' || $elementActive == 'admin_hostels' || $elementActive == 'admin_rooms' || $elementActive == 'admin_incidents' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#adminLinks">
                     <i class="nc-icon nc-lock-circle-open"></i>
                     <p>
@@ -34,7 +34,7 @@
                                 <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
                             </a>
                         </li> -->
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                        <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'user') }}">
                                 <span class="sidebar-mini-icon">{{ __('U') }}</span>
                                 <span class="sidebar-normal">{{ __(' User Management ') }}</span>

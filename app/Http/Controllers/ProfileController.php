@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,8 +15,8 @@ class ProfileController extends Controller
      * @return \Illuminate\View\View
      */
     public function edit()
-    {
-        return view('profile.edit');
+    {   $user = auth()->user();
+        return view('profile.edit', compact('user'));
     }
 
     /**

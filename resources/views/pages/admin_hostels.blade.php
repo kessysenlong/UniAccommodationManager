@@ -1,6 +1,6 @@
 @extends('layouts.app', [
 'class' => '',
-'elementActive' => 'admin_hostel'
+'elementActive' => 'admin_hostels'
 ])
 
 @section('content')
@@ -28,7 +28,7 @@
           <div class="row">
 
             <div class="col-md-6">
-              <form method="POST" action="{{route('hostel.create')}}">
+              <form method="POST" action="{{route('hostel.create')}}"  enctype="multipart/form-data">
                 @csrf
                 <div class="form-group col-md-12">
                   <label for="hostel_name">Hostel Name</label>
@@ -54,7 +54,7 @@
 
 
             <div class="col-md-6">
-              @if(count($hostels) < 1) 
+              @if(count($hostels) == 0) 
               <p>You have not created any hostels yet</p>
                 @else
                 @foreach($hostels as $hostel)

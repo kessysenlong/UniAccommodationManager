@@ -34,9 +34,14 @@ class PageController extends Controller
         $user = Auth::user();
         $hostels = Hostel::all();
         $rooms = Room::all();
+        $capacity = array_sum($rooms->pluck('beds')->toArray());
+        
+        foreach($rooms as $room){
+            $room->hostel = Hostel::where('id', $room->hostel_id)->value('name');
+        }
 
         if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}", compact('user', 'hostels', 'rooms'));
+            return view("pages.{$page}", compact('user', 'hostels', 'rooms', 'capacity'));
         }
 
         return abort(404);

@@ -4,17 +4,12 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="https://www.creative-tim.com" target="_blank">{{ __('Creative Tim') }}</a>
+                        <a href="https://www.bazeuniversity.edu.ng" target="_blank">{{ __('Baze University') }}</a>
                     </li>
                     <li>
-                        <a href="https://updivision.com" target="_blank">{{ __('UpDivision') }}</a>
+                        <a href="https://ordo.ng" target="_blank">{{ __('Ordo.ng') }}</a>
                     </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com/" target="_blank">{{ __('Blog') }}</a>
-                    </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/license" target="_blank">{{ __('Licenses') }}</a>
-                    </li>
+                    
                 </ul>
             </nav>
             <div class="credits ml-auto">
@@ -22,7 +17,7 @@
                     ©
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>{{ __(', made with ') }}<i class="fa fa-heart heart"></i>{{ __(' by ') }}<a class="@if(Auth::guest()) text-white @endif" href="https://www.creative-tim.com" target="_blank">{{ __('Creative Tim') }}</a>{{ __(' and ') }}<a class="@if(Auth::guest()) text-white @endif" target="_blank" href="https://updivision.com">{{ __('UPDIVISION') }}</a>
+                    </script>{{ __(' Baze Univeristy ') }}
                 </span>
             </div>
         </div>

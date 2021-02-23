@@ -21,14 +21,14 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper') }}/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper') }}/img/logo-small.png">
+    <link rel="icon" type="image/png" href="{{ asset('paper') }}/img/logo-small.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <!-- Extra details for Live View on GitHub Pages -->
 
     <title>
-        {{ __('Paper Dashboard by Creative Tim') }}
+        Baze Accommodation
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -42,7 +42,8 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- toastr -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <!-- datatables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.7/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.css" />
+    <script src="https://kit.fontawesome.com/b21083b5c7.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="{{ $class }}">
@@ -50,7 +51,7 @@ The above copyright notice and this permission notice shall be included in all c
     @auth()
 
     @include('layouts.page_templates.auth')
-    @include('layouts.navbars.fixed-plugin')
+    <!-- @include('layouts.navbars.fixed-plugin') -->
     @endauth
 
     @guest
@@ -98,8 +99,15 @@ The above copyright notice and this permission notice shall be included in all c
         }
         @endif
     </script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/r-2.2.7/datatables.min.js"></script>
-    <script src="\js\datatables.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/sl-1.3.1/datatables.min.js"></script>    <script src="\js\datatables.js"></script>
+    <script src="\js\currensy.js"></script>
+
+
+
+
+
 
 
     @stack('scripts')

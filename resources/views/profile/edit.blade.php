@@ -33,16 +33,14 @@
                             </p>
                         </div>
                         <p class="description text-center">
-                            {{ __('I like the way you work it') }}
-                            <br> {{ __('No diggity') }}
-                            <br> {{ __('I wanna bag it up') }}
+                            <!--  -->
                         </p>
                     </div>
                     <div class="card-footer">
                         <hr>
                         <div class="button-container">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                                <!-- <div class="col-lg-3 col-md-6 col-6 ml-auto">
                                     <h5>{{ __('12') }}
                                         <br>
                                         <small>{{ __('Files') }}</small>
@@ -59,11 +57,12 @@
                                         <br>
                                         <small>{{ __('Spent') }}</small>
                                     </h5>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
+                @if($user->isAdmin())
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">{{ __('Team Members') }}</h4>
@@ -136,6 +135,7 @@
                         </ul>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="col-md-8 text-center">
                 <form class="col-md-12" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">

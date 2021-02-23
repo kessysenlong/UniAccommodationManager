@@ -1,3 +1,12 @@
+<h4>Baze Accommodation Manager</h4>
+<p>Baze Accommodation Manager is built on php backend with laravel</p>
+
+<h6>Setup</h6>
+<p>Clone repo</p>
+<p>Run "npm install"</p>
+<p>Run "npm run dev"</p>
+<p>Run "php artisan migrate --seed"</p>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

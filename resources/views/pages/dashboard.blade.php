@@ -12,13 +12,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                <i class="fas fa-bed text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">Capacity</p>
-                                    <p class="card-title">150GB
+                                    <p class="card-title">{{$capacity}}
+                                        <small>spaces</small>
                                         <p>
                                 </div>
                             </div>
@@ -38,13 +39,13 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                <i class="fas fa-door-open text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
-                                    <p class="card-title">$ 1,345
+                                    <p class="card-category">Rooms</p>
+                                    <p class="card-title">{{count($rooms)}}
                                         <p>
                                 </div>
                             </div>

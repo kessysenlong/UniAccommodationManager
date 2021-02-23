@@ -25,10 +25,10 @@ class Admin
         }else{
 
             $notification = [
-                'message' => 'Error with request',
+                'message' => 'You don\'t have access to this page.',
                 'alert-type' => 'error'
             ];
-            return redirect()->with($notification);
+            return redirect('/home')->with($notification);
         }
       
     }
