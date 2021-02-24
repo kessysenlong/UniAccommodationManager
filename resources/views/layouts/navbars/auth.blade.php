@@ -5,20 +5,20 @@
                 <img src="{{ asset('paper') }}/img/logo-small.png">
             </div>
         </a>
-        <a href="http://www.bazeuniversity.edu.ng" class="simple-text logo-normal">
+        <a href="/" class="simple-text logo-normal">
            {{$user->name}}
         </a>
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'dashboard') }}">
+                <a href="{{ route('home', 'dashboard') }}">
                     <i class="nc-icon nc-bank"></i>
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
             @if($user->isAdmin() == true)
-            <li class="{{ $elementActive == 'users' || $elementActive == 'admin_bookings' || $elementActive == 'admin_hostels' || $elementActive == 'admin_rooms' || $elementActive == 'admin_incidents' ? 'active' : '' }}">
+            <li class="{{ $elementActive == 'users' || $elementActive == 'admin_bookings' || $elementActive == 'admin_sessions' || $elementActive == 'admin_hostels' || $elementActive == 'admin_rooms' || $elementActive == 'admin_incidents' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#adminLinks">
                     <i class="nc-icon nc-lock-circle-open"></i>
                     <p>
@@ -61,6 +61,13 @@
                                 <span class="sidebar-normal">{{ __(' Manage Rooms ') }}</span>
                             </a>
                         </li>
+                         <!-- manage sessions -->
+                         <li class="{{ $elementActive == 'admin_sessions' ? 'active' : '' }}">
+                            <a href="{{ route('page.index', 'admin_sessions') }}">
+                                <span class="sidebar-mini-icon">{{ __('MS') }}</span>
+                                <span class="sidebar-normal">{{ __(' Manage Sessions ') }}</span>
+                            </a>
+                        </li>
                         <!-- manage incidents -->
                         <li class="{{ $elementActive == 'admin_incidents' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'admin_incidents') }}">
@@ -73,19 +80,19 @@
             </li>
             @endif
             <li class="{{ $elementActive == 'book_room' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'book_room') }}">
+                <a href="{{ route('get.pages', 'book_room') }}">
                     <i class="nc-icon nc-pin-3"></i>
                     <p>Book a room</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'payments' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'payments') }}">
+                <a href="{{ route('get.pages', 'payments') }}">
                     <i class="nc-icon nc-tile-56"></i>
                     <p>My Payments</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'incidents' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'incidents') }}">
+                <a href="{{ route('get.pages', 'incidents') }}">
                     <i class="nc-icon nc-bell-55"></i>
                     <p>Report Incident</p>
                 </a>

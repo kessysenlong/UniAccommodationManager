@@ -7,9 +7,22 @@ use App\Models\Hostel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Room;
+use App\Models\Session;
 
 class HostelController extends Controller
 {
+    public function index(){
+
+        $user = Auth::user();
+        $hostels = Hostel::all();
+        $rooms = Room::all();
+        $capacity = array_sum($rooms->pluck('beds')->toArray());
+        
+        foreach($rooms as $room){
+            $room->hostel = Hostel::where('id', $room->hostel_id)->value('name');
+        }
+        return view('pages.book_room', compact('user', 'hostels', 'rooms', 'capacity'));
+    }
 
     public function store(Request $request)
     {
@@ -40,13 +53,16 @@ class HostelController extends Controller
         $hostel = Hostel::find($id);
         $rooms = Room::where('hostel_id', $id)->get();
         $occupancy = array_sum($rooms->pluck('occupancy')->toArray());
+        $active_session = Session::where('is_active', true)->first();
+        $sessions = Session::where('is_bookable', true)->get(); 
+
 
         // student
         if ($route_name == 'view.hostel') {
-            return view('pages.hostel_rooms', compact('hostel', 'user', 'rooms', 'occupancy'));
+            return view('pages.hostel_rooms', compact('hostel', 'user', 'rooms', 'occupancy', 'sessions', 'active_session'));
         }
 
-        return view('pages.hostel_view', compact('hostel', 'user', 'rooms', 'occupancy'));
+        return view('pages.hostel_view', compact('hostel', 'user', 'rooms', 'occupancy', 'sessions', 'active_session'));
     }
 
     public function edit(Request $request, $id)

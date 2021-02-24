@@ -34,7 +34,7 @@
                                 <div class="col-md-12">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="mb-1">{{$hostel->name}}</h6>
-                                        <small> 1 room left</small>
+                                        <small> {{$hostel->spacesLeft()}} spaces left</small>
                                     </div>
                                     <p class="text-left">{{$hostel->description}}</p>
                                 </div>
@@ -42,6 +42,8 @@
                         </div>
                         </a>
                         @endforeach
+                        @else
+                        Hostels have not been created, contact your administrator.
                         @endif
 
                         </div>

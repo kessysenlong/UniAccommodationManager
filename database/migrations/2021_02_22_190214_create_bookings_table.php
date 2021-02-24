@@ -16,13 +16,14 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('ref');
-            $table->integer('student_id');
+            $table->string('student_name');
+            $table->integer('student_id')->nullable();
             $table->decimal('amount')->nullable();
             $table->integer('room_id');
             $table->integer('occupancy')->default(1);
             $table->string('session');
-            $table->string('status');
-            $table->string('actioned_by');
+            $table->string('status')->default('Pending');
+            $table->string('actioned_by')->nullable();
             $table->timestamps();
         });
     }
