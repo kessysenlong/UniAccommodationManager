@@ -45,10 +45,25 @@
                             <h6 class="pt-3">Booking Form</h6>
                             <form action="/book_room" method="post" enctype="multipart/form-data">
                                 @csrf
-
+                                @if($user->isAdmin())
+                                <div class="form-group col-md-12">
+                                    <label for="student_id">Student ID</label>
+                                    <input type="text" class="form-control" id="student_id" name="student_id" value="" required>
+                                    <small id="info" class="">*confirm student ID</small><br>
+                                    <button type="button" class="btn btn-primary" onclick="checkStudent(this)">Confirm</button>        
+                                </div>
+                                <input type="text" name="student" id="student" hidden>
+                                <input type="text" name="student_name" id="student_name" hidden>
+                                @else
+                                <div class="form-group col-md-12">
+                                    <label for="student_id">Student ID</label>
+                                    <input type="text" class="form-control-plaintext" id="student_id" name="student_id" value="{{auth()->user()->student_id}}" required readonly>
+                                </div>
+                                @endif
                                 <div class="form-group col-md-12">
                                     <label for="room">Room chosen</label>
                                     <input type="number" class="form-control-plaintext" id="room" name="room" required readonly>
+                                    <small id="room_info"></small>
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -60,7 +75,6 @@
                                         @endforeach
                                         @endif
                                     </select>
-                                    <!-- <input type="session" class="form-control-plaintext" id="session" name="session" required readonly> -->
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="price">Price</label>
@@ -100,6 +114,9 @@
                     document.getElementById('room').value = data.name;
                     document.getElementById('price').value = data.price;
                     document.getElementById('room_id').value = data.id;
+                    room_info = document.getElementById('room_info');
+                    spaces = data.beds - data.occupancy;
+                    room_info.innerHTML = spaces +' of '+data.beds+' spaces available';
                     // console.log(data)
                 } else {
                     alert('Invalid room select, try again');
@@ -107,6 +124,48 @@
             },
             error: function(response) {
                 alert("Something went wrong, try again");
+            }
+
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    function checkStudent(obj) {
+        var student_id = document.getElementById('student_id').value;
+        var student = student_id.replace(/\//g, "_");
+
+        $.ajax({
+            type: "GET",
+            url: "/check_student/" + student,
+            dataType: 'JSON',
+            success: function(data) {
+                if (data != null) {
+                    student_field = document.getElementById('student_id'); 
+                    info_text = document.getElementById('info');
+                    student_ = document.getElementById('student');
+                    student_name = document.getElementById('student_name');
+                    
+                    
+                    student_.value = data.id;
+                    student_name.value = data.name;
+                    student_field.value = data.student_id;
+                    student_field.readOnly = true;
+                    student_field.classList.add('form-control-plaintext');
+                    student_field.classList.remove('form-control');
+                    info_text.classList.add('text-success');
+                    info_text.innerHTML = data.name +'. Student valid, go ahead and book';
+                   
+                    // console.log(data)
+                } else {
+                    alert('Invalid student ID, try again');
+                    
+                }
+            },
+            error: function(response) {
+                document.getElementById('student_id').value = '';
+                alert('Invalid student ID, try again');
+                
             }
 
         });

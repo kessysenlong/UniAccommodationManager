@@ -28,12 +28,6 @@
                 </a>
                 <div class="collapse show" id="adminLinks">
                     <ul class="nav">
-                        <!-- <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
-                            <a href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
-                            </a>
-                        </li> -->
                         <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'user') }}">
                                 <span class="sidebar-mini-icon">{{ __('U') }}</span>
@@ -85,6 +79,13 @@
                     <p>Book a room</p>
                 </a>
             </li>
+            @if($user->isAdmin() == false)
+            <li class="{{ $elementActive == 'my_bookings' ? 'active' : '' }}">
+                <a href="{{ route('get.pages', 'my_bookings') }}">
+                    <i class="nc-icon nc-single-copy-04"></i>
+                    <p>My Bookings</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'payments' ? 'active' : '' }}">
                 <a href="{{ route('get.pages', 'payments') }}">
                     <i class="nc-icon nc-tile-56"></i>
@@ -97,6 +98,7 @@
                     <p>Report Incident</p>
                 </a>
             </li>
+            @endif
             <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
                 <a href="{{ route('profile.edit', 'profile') }}">
                     <i class="nc-icon nc-single-02"></i>

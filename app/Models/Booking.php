@@ -12,22 +12,15 @@ class Booking extends Model
     protected $table = 'bookings';
 
     public function userValid($id, string $session_id){
-        $session_bookings = Booking::where('session', $session_id)->get();
+        $session_bookings = Booking::where('session', $session_id)->where('status', 'Pending')->get();
         $id_s = $session_bookings->pluck('student_id')->toArray();
         $names = $session_bookings->pluck('student_name')->toArray();
 
         // uncomment for student Id check
-        /* if(in_array($id, $id_s)){
-            return false;
-        }else{
-            return true;
-        } */
-
-        if(in_array($id, $names)){
+        if(in_array($id, $id_s)){
             return false;
         }else{
             return true;
         }
-
     }
 }

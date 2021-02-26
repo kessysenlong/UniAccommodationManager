@@ -126,10 +126,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        Are you sure?
-                        <p>This will delete all the rooms in this hostel as well.</p>
+                       Coming soon!
                     </div>
-                    <a href="/admin_hostels/delete/{id}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

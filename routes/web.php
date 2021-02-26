@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/room_data/get/{id}', ['as' => 'get.roomData', 'uses' => 'App\Http\Controllers\RoomController@getData']);
 	Route::post('/book_room', ['as' => 'book.room', 'uses' => 'App\Http\Controllers\BookingController@store']);
 	Route::get('/student/{page}', [App\Http\Controllers\PageController::class, 'studentPages'])->name('get.pages');
+	Route::post('/booking/cancel/{id}', ['as' => 'book.cancel', 'uses' => 'App\Http\Controllers\BookingController@cancelBooking']);
+	// also useful for roommate booking feature, coming soon
+	Route::get('/check_student/{student}', ['as' => 'get.student', 'uses' => 'App\Http\Controllers\BookingController@checkStudent']);
 
 });
 
@@ -54,6 +57,7 @@ Route::group(['middleware' => 'admin'], function () {
 		App\Models\Session::destroy($id);
 		$notification = ['message'=>'Deleted successfully', 'alert-type' =>'success'];
 		return redirect('/admin_sessions',)->with($notification);
+
 	});
 	
 });
