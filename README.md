@@ -1,5 +1,5 @@
-<h4>Baze Accommodation Manager</h4>
-<p>Baze Accommodation Manager is built on php backend with laravel</p>
+<h4>Uni Accommodation Manager with Interactive room map</h4>
+<p>Uni Accommodation Manager is built on laravel, php backend</p>
 
 <h6>Setup</h6>
 <p>Clone repo</p>
