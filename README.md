@@ -3,6 +3,7 @@
 
 <h6>Setup</h6>
 <p>Clone repo</p>
+<p>Run "composer install"</p>
 <p>Run "npm install"</p>
 <p>Run "npm run dev"</p>
 <p>Run "php artisan migrate --seed"</p>
