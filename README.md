@@ -8,7 +8,7 @@
 <p>Run "npm run dev"</p>
 <p>Run "php artisan migrate --seed"</p>
 
-<p align="center"><a><img src="public/Screenshot (2).png" width="auto" height="600"></a></p>
+<p align="center"><a><img src="public/Screenshot (2).png" width="auto" height="400"></a></p>
 
 
 
